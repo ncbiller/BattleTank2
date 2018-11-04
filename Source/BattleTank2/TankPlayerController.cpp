@@ -11,6 +11,8 @@ ATank * ATankPlayerController::GetControlledTank() const {
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
+	//PrimaryActorTick.bCanEverTick = true;
+
 	UE_LOG(LogTemp, Warning, TEXT("Tank Controller Begin Play"));
 	ATank * ControlledTank;
 
@@ -22,4 +24,15 @@ void ATankPlayerController::BeginPlay()
 	else {
 		UE_LOG(LogTemp, Warning, TEXT("Tank Controller Cant find Tank"));
 	}
+}
+
+void ATankPlayerController::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	AimTowardsCrosshair();
+	
+}
+
+void ATankPlayerController::AimTowardsCrosshair() {
+
 }
