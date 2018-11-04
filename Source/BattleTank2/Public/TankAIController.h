@@ -20,6 +20,6 @@ public:
 	void BeginPlay() override;
 
 	ATank * GetControlledTank();
-	
+	ATank * GetPlayerTank();
 	
 };
