@@ -34,5 +34,35 @@ void ATankPlayerController::Tick(float DeltaSeconds)
 }
 
 void ATankPlayerController::AimTowardsCrosshair() {
+	if (!GetControlledTank()) { return; }
 
+	FVector HitLocation;
+	if (GetSightRayHitLocation(HitLocation)) {
+		UE_LOG(LogTemp, Warning, TEXT("%s"), *HitLocation.ToString())
+	}
+}
+
+bool ATankPlayerController::GetSightRayHitLocation(FVector & HitLocation) const {
+	
+	int32 ViewportSizeX, ViewportSizeY;
+	GetViewportSize(ViewportSizeX, ViewportSizeY);
+
+	FVector2D ScreenLocation(ViewportSizeX * CrossHairXLocation, ViewportSizeX * CrossHairYLocation);
+	FVector LookDirection;
+
+	if(GetLookDirection(ScreenLocation, LookDirection)) {
+	UE_LOG(LogTemp, Warning, TEXT("WorldDirection %s"), *LookDirection.ToString());
+
+	}
+	return true;
+
+}
+
+bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector & LookDirection) const {
+	FVector WorldLocation;
+	return DeprojectScreenPositionToWorld(
+		ScreenLocation.X, 
+		ScreenLocation.Y, 
+		WorldLocation, 
+		LookDirection);
 }

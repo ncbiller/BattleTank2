@@ -22,4 +22,14 @@ private :
 	void BeginPlay() override;
 	void Tick(float DeltaSeconds) override;
 	void AimTowardsCrosshair();
+	bool GetSightRayHitLocation(FVector & HitLocation) const;
+
+	bool GetLookDirection(FVector2D ScreenLocation, FVector & LookDirection) const;
+
+	UPROPERTY(EditAnywhere)
+	float CrossHairXLocation = 0.5f;
+
+	UPROPERTY(EditAnywhere)
+	float CrossHairYLocation = 0.33333f;
+
 };
