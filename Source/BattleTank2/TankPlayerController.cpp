@@ -12,12 +12,12 @@ void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	UE_LOG(LogTemp, Warning, TEXT("Tank Controller Begin Play"));
-	ATank * MyTank;
+	ATank * ControlledTank;
 
-	MyTank = GetControlledTank();
+	ControlledTank = GetControlledTank();
 
-	if (MyTank) {
-		UE_LOG(LogTemp, Warning, TEXT("Tank Controller Has Tank %s"), *MyTank->GetName());
+	if (ControlledTank) {
+		UE_LOG(LogTemp, Warning, TEXT("Tank Controller Has Tank %s"), *ControlledTank->GetName());
 	}
 	else {
 		UE_LOG(LogTemp, Warning, TEXT("Tank Controller Cant find Tank"));
